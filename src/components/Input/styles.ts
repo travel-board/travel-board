@@ -29,7 +29,7 @@ export const Inputs = styled.div`
         background: transparent;
         padding-inline: 10px;
         box-sizing: border-box;
-        color: black;
+        color: #D9D9D9;
         :focus{
             outline: none;
         }
