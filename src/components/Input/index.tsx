@@ -7,16 +7,17 @@ interface IInput {
     error?: boolean;
     message?: string,
     register?: any,
-    children: React.ReactNode
+    children: React.ReactNode,
+    click?: () => {}
 }
 
-export const Input = ({ type, placeholder, button, error, message, children}:IInput) => {
+export const Input = ({ type, placeholder, button, error, message, register, children, click}:IInput) => {
     return(
         <BlockInput>
             <Inputs>
-                <input type={type} placeholder={placeholder}/>
+                <input type={type} placeholder={placeholder} {...register} />
                 {
-                    button ? <button>{children}</button> : null
+                    button ? <button onClick={click}>{children}</button> : null
                 }
             </Inputs>
             {
