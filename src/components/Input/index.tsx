@@ -7,7 +7,7 @@ interface IInput {
     error?: boolean;
     message?: string,
     register?: any,
-    children: React.ReactNode,
+    children?: React.ReactNode,
     click?: () => {}
 }
 
