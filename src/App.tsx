@@ -1,16 +1,14 @@
 import { Input } from "./components/Input"
 
 import { FaSearch } from 'react-icons/fa'
+import { ModalCreateEdit } from "./components/Modal/ModalCreate"
 
 
 function App() {
 
   return (
     <>
-      <Input type="text" placeholder="Digite seu email" button={false} error={false} message="error">
-        <FaSearch/>
-      </Input>
-      
+     <ModalCreateEdit />
     </>
   )
 }
