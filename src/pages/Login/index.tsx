@@ -1,18 +1,18 @@
-import { LoginForm } from "../../components/Form/LoginForm"
+import { LoginForm } from "../../components/Form/LoginForm";
 import { Link } from "react-router-dom";
-import { StyledLogin } from "../../components/StyledLogin/StyledLogin";
+import { StyledLogin } from "./StyledLogin.ts";
+import logoUrl from "../../assets/logo.svg";
+
 export const LoginPage = () => (
-    <StyledLogin>
-        <div className="imgContainer">
-            <figure>
-                <img src="" alt="foto" />
-            </figure>
-        </div>
-        <div className="formContainer">
-                <img src="/Users/larissa/Kenzie/m3/Entregas/Travel board/travel-board/src/assets/logo .png" alt="Travel Board"/>
-                <LoginForm />
-                <p>Ainda não possui um cadastro?</p>
-                <Link to="/singup">Cadastrar</Link>
-        </div>
-    </StyledLogin>
-)
+  <StyledLogin>
+    <div className="imgContainer"></div>
+    <div className="formContainer">
+      <figure>
+        <img src={logoUrl} alt="Travel Board" />
+      </figure>
+      <LoginForm />
+      <p>Ainda não possui um cadastro?</p>
+      <Link to="/singup">Cadastrar</Link>
+    </div>
+  </StyledLogin>
+);

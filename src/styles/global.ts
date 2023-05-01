@@ -51,6 +51,10 @@ input {
     background-color: var(--gray-6);
 }
 
+#root{
+    width: 100%;
+}
+
 @media (max-width: 750px{
     :root {
         font-size: 60%;
