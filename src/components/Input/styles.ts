@@ -12,7 +12,7 @@ export const BlockInput = styled.div`
 
 export const Inputs = styled.div`
     height: 35px;
-    border: 1px solid #000;
+    border: 1px solid var(--gray-3);
     border-radius: 34px;
     display: flex;
     align-items: center;
@@ -29,12 +29,13 @@ export const Inputs = styled.div`
         background: transparent;
         padding-inline: 10px;
         box-sizing: border-box;
-        color: #D9D9D9;
+        color: #B4B4B4;
         :focus{
             outline: none;
+            color: black;
         }
         ::placeholder{
-            color: #000;
+            color: #B4B4B4;
         }
     }
     button{
