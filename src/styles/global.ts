@@ -1,6 +1,6 @@
-import {createGlobalStyles} from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyles = createGlobalStyles`
+export const GlobalStyles = createGlobalStyle`
 :root{
     --primary: #26A59E;
     --secondary: #EF8738;
@@ -56,4 +56,4 @@ input {
         font-size: 60%;
     } 
 })
-`
+`;
