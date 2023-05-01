@@ -1,15 +1,13 @@
-import { Input } from "./components/Input"
-
-import { FaSearch } from 'react-icons/fa'
 import { ModalCreateEdit } from "./components/Modal/ModalCreate"
-
+import { GlobalStyle } from "./styles/global"
 
 function App() {
 
   return (
-    <>
-     <ModalCreateEdit />
-    </>
+    <div className="foi" style={{background: 'black'}}>
+      <GlobalStyle />
+      <ModalCreateEdit />
+    </div>
   )
 }
 
