@@ -12,7 +12,7 @@ export const BlockInput = styled.div`
 
 export const Inputs = styled.div`
     height: 35px;
-    border: 1px solid #DBDBDB;
+    border: 1px solid #000;
     border-radius: 34px;
     display: flex;
     align-items: center;
@@ -34,7 +34,7 @@ export const Inputs = styled.div`
             outline: none;
         }
         ::placeholder{
-            color: #D9D9D9;
+            color: #000;
         }
     }
     button{
