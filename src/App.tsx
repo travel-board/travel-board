@@ -1,18 +1,16 @@
-import { Input } from "./components/Input"
-
-import { FaSearch } from 'react-icons/fa'
-
+import { GlobalStyles } from "./styles/global";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Router from "./routes/route";
 
 function App() {
-
   return (
     <>
-      <Input type="text" placeholder="Digite seu email" button={false} error={false} message="error">
-        <FaSearch/>
-      </Input>
-      
+      <GlobalStyles />
+      <Router />
+      <ToastContainer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
