@@ -1,14 +1,16 @@
-import { ModalCreateEdit } from "./components/Modal/ModalCreate"
-import { GlobalStyle } from "./styles/global"
+import { GlobalStyles } from "./styles/global";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Router from "./routes/route";
 
 function App() {
-
   return (
-    <div className="foi" style={{background: 'black'}}>
-      <GlobalStyle />
-      <ModalCreateEdit />
-    </div>
-  )
+    <>
+      <GlobalStyles />
+      <Router />
+      <ToastContainer />
+    </>
+  );
 }
 
-export default App
+export default App;
