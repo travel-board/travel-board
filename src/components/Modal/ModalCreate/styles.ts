@@ -7,15 +7,17 @@ export const Modal = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    background: #B1B2B250;
     
     dialog{
         margin: 0 auto;
         padding: 0;
-        width: 350px;
+        width: 280px;
         height: 400px;
         background: #507701;
         color: #fff;
-        box-shadow: 0px 0px 15px black;
+        box-shadow: 0px 0px 15px #00000050;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -23,8 +25,11 @@ export const Modal = styled.div`
         inset: none;
         background: white;
         border-radius: 4px;
+        position: fixed;
         ::backdrop{
             background-color: black;
+            width: 100vw;
+            height: 100vh;
         }
         .closeModal{
             position: relative;
@@ -33,8 +38,8 @@ export const Modal = styled.div`
                 height: 30px;
                 width: 30px;
                 position: absolute;
-                right: 3px;
-                top: -15px;
+                right: 12px;
+                top: 8px;
                 background: transparent;
                 border: none;
                 border-radius: 4px;
@@ -44,9 +49,14 @@ export const Modal = styled.div`
             }
         }
         h3{
-            margin-top: 20px;
+            font-size: 24px;
+            margin-top: 50px;
             margin-bottom: 20px;
-            color: black;
+            color: var(--primary);
+        }
+        @media(min-width: 375px){
+            width: 400px;
+            height: 400px;
         }
     }
 `

@@ -3,9 +3,15 @@ import { travelApi } from '../api/travelApi'
 
 import { Data } from '../interface/travelInterface'
 
-interface ContextTravelData { }
+interface ContextTravelData { 
+    addTravel: (data: Data) => void,
+    travel: Data[]
+}
 
-export const ContextTravel = createContext<ContextTravelData>({})
+export const ContextTravel = createContext<ContextTravelData>({
+    addTravel: () => {},
+    travel: []
+})
 
 interface TravelProviderDta {
     children: React.ReactNode

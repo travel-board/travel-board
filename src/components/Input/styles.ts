@@ -34,9 +34,14 @@ export const Inputs = styled.div`
     color: black;
     :focus {
       outline: none;
+      background: transparent;
     }
     ::placeholder {
       color: #d9d9d9;
+      font-size: 13px;
+    }
+    :-webkit-autofill{
+      -webkit-box-shadow: 0 0 0 30px #fafafa inset !important;
     }
   }
   button {
@@ -55,6 +60,6 @@ export const Inputs = styled.div`
     cursor: pointer;
   }
   :has(input:focus) {
-    border: 1px solid red;
+    border: 1px solid var(--primary);
   }
 `;

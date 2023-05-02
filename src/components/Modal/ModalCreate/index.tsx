@@ -2,17 +2,24 @@ import { Modal } from './styles'
 import { FormModal } from './Form'
 import { AiOutlineClose } from 'react-icons/ai'
 
-export const ModalCreateEdit = () => {
+interface Modal {
+    openModal: boolean,
+    setOpenModal: (data: boolean) => void,
+    edit: boolean
+}
+
+export const ModalCreateEdit = ({openModal, setOpenModal, edit}:Modal) => {
+
     return(
-        <Modal>
+        <Modal  style={openModal ? {display: 'flex'} : {display: 'none'}} >
            <dialog>
                 <div  className='closeModal'>
-                    <button>
+                    <button onClick={() => setOpenModal(false)}>
                         <AiOutlineClose size={20} />
                     </button>
                 </div>
                 <h3>Adicionar novo local</h3>
-                <FormModal />
+                <FormModal edit={edit} />
            </dialog>
         </Modal>
     )
