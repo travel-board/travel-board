@@ -5,12 +5,14 @@ import { Data } from '../interface/travelInterface'
 
 interface ContextTravelData { 
     addTravel: (data: Data) => void,
-    travel: Data[]
+    travel: Data[],
+    editTravel: (data: Data) => void
 }
 
 export const ContextTravel = createContext<ContextTravelData>({
     addTravel: () => {},
-    travel: []
+    travel: [],
+    editTravel: () => {}
 })
 
 interface TravelProviderDta {
@@ -27,8 +29,12 @@ export const TravelProvider = ({ children }: TravelProviderDta) => {
         Api.postTravel(data, setTravel, travel)
     }
 
+    const editTravel = (data: Data) => {
+        Api.patchTravel(data, setTravel, travel)
+    }
+
     return (
-        <ContextTravel.Provider value={{ addTravel, travel }} >
+        <ContextTravel.Provider value={{ addTravel, travel, editTravel }} >
             {children}
         </ContextTravel.Provider>
     )

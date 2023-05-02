@@ -12,12 +12,13 @@ interface Edit {
 export const FormModal = ({ edit }: Edit) => {
     
     const { register, handleSubmit, formState: { errors } } = useForm({});
-    const { addTravel } = useTravel()
+    const { addTravel, editTravel } = useTravel()
 
     const onSubmit = (formData:any) => {
         if(!edit){
-            console.log(formData)
             addTravel(formData)
+        }else{
+            editTravel(formData)
         }
     }
     return(

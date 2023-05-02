@@ -12,7 +12,7 @@ export const travelApi = () => {
             .then(res => setTravel([...travel, res.data]))
             .catch(err => console.error(err))
     }
-    const editTravel = (data: Data, setTravel:(value: Data[]) => void, travel: Data[]) => {
+    const patchTravel = (data: Data, setTravel:(value: Data[]) => void, travel: Data[]) => {
             api.patch('travel', data)
             .then(res => setTravel([...travel, res.data]))
             .catch(err => console.error(err))
@@ -20,6 +20,6 @@ export const travelApi = () => {
 
     return{
         postTravel,
-        editTravel
+        patchTravel
     }
 }
