@@ -12,7 +12,7 @@ export const LoginPage = () => (
       </figure>
       <LoginForm />
       <p>Ainda não possui um cadastro?</p>
-      <Link to="/singup">Cadastrar</Link>
+      <Link to="/register">Cadastrar</Link>
     </div>
   </StyledLogin>
 );
