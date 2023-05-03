@@ -1,14 +1,15 @@
+import { ReactNode } from "react"
 import { ButtonBlock } from "./styles"
 
 interface IStyle {
     classN: string,
     types?: "button" | "submit" | "reset" | undefined,
-    text: string,
-    click?: () => void
+    children: ReactNode,
+    click?: () => void,
 }
 
-export const Button = ({ classN, types, text, click }:IStyle) => (
+export const Button = ({ classN, types, children, click }:IStyle) => (
     <ButtonBlock>
-        <button type={types} onClick={click} className={classN}>{text}</button>
+        <button type={types} onClick={click} className={classN}>{children}</button>
     </ButtonBlock>
 )

@@ -1,14 +1,10 @@
-import { UserContext } from "../../../providers/UserProvider";
 import { Button } from "../../Button/index";
 import { Input } from "../../Input/index";
 import { schema } from "../../../schemas/loginValidator";
-import * as api from "../../../services/api";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { AxiosError } from "axios";
-import { toast } from "react-toastify";
 import { StyledForm } from "./StyledForm";
+import { useUser } from "../../../hooks/useUser";
 
 interface LoginFieldValues {
   email: string;
@@ -22,24 +18,16 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginFieldValues>({ resolver: zodResolver(schema) });
 
-  const { handleLogin: onLogin } = useContext(UserContext);
+  const { handleLogin } = useUser()
 
-  async function login({ email, password }: LoginFieldValues) {
-    try {
-      const session = await api.login(email, password);
-      toast.success("Login efetuado com sucesso");
-      onLogin(session);
-    } catch (error: unknown) {
-      const responseError = error as AxiosError<string>;
-      toast.error(responseError.response?.data);
-    }
+  async function login( formData : LoginFieldValues) {
+      handleLogin(formData);
   }
 
   return (
     <StyledForm onSubmit={handleSubmit(login)}>
       <Input
         type="email"
-        id="email"
         placeholder="Email"
         error={errors?.email?.message}
         register={register("email")}
@@ -47,13 +35,12 @@ export const LoginForm = () => {
       />
       <Input
         type="password"
-        id="password"
         placeholder="Senha"
         error={errors?.password?.message}
         register={register("password")}
         button={false}
       />
-      <Button classN="blue" types="submit" text="Entrar" />
+      <Button classN="blue" types="submit" children="Entrar" />
     </StyledForm>
   );
 };

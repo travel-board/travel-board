@@ -1,18 +1,28 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { Session, User } from "../services/api";
 import { useNavigate } from "react-router-dom";
-import * as api from "../services/api";
+import { api } from "../services/api";
+import { userApi } from "../api/userApi";
+import { ILogin, IUser } from "../interfaces/user";
+import jwtDecode from "jwt-decode";
+
 
 interface UserProviderProps {
   children: ReactNode | ReactNode[];
 }
 
 interface UserContextType {
-  handleLogin(session: Session): void;
+  handleLogin(session: ILogin): void;
   handleLogout(): void;
   loading: boolean;
-  user: null | User;
+  user: null | IUser;
   token: null | string;
+}
+
+interface IJTWDecode {
+  email: string,
+  exp: string, 
+  iat: string, 
+  sub: string
 }
 
 const TOKEN_KEY = "@TOKEN";
@@ -26,52 +36,50 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     localStorage.getItem(TOKEN_KEY)
   );
 
-  const [user, setUser] = useState<null | User>(null);
+  const [user, setUser] = useState<null | IUser>(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (token == null) {
-      localStorage.removeItem(TOKEN_KEY);
-      localStorage.removeItem(USER_ID_KEY);
-    } else {
-      localStorage.setItem(TOKEN_KEY, token);
-    }
-  }, [token]);
+  const Api = userApi()
 
   useEffect(() => {
-    if (user != null) {
-      localStorage.setItem(USER_ID_KEY, user.id.toString());
-    }
-  }, [user]);
+    const loadUser = () => {
+        const token = localStorage.getItem('@TOKEN')
 
-  useEffect(() => {
-    async function fetchData() {
-      if (token != null) {
-        const userId = localStorage.getItem(USER_ID_KEY) as string;
+        if(!token){
+            return setTimeout(() => {
+                setLoading(false)
+            }, 2000)
+        }
+        
+        api.defaults.headers.common.Authorization = `Bearer ${token}`
 
-        // const user = await api.getUser(token, userId).catch(() => null);
-        // if (user != null) {
-        //   setUser(user);
-        //   navigate("/home");
-        // } else {
-        //   setToken(null);
-        // }
-      }
-      setLoading(false);
-    }
-    fetchData();
-  }, []);
+        const decode:IJTWDecode = jwtDecode(token)
+        
+          api.get(`/users/${decode.sub}`)
+          .then(res => {
+              setUser(res.data.user)
+              setToken(res.data.accessToken)
+              navigate('/')
+          })
+          .catch(err => err)
+          .finally(() => setTimeout(() => {
+              setLoading(false)
+          }, 2000))
+      } 
 
-  function handleLogin(session: Session) {
-    setToken(session.accessToken);
-    setUser(session.user);
-    navigate("/home");
+      loadUser()
+  },[])
+
+  const handleLogin = (session:ILogin) => {
+    Api.login(session.email, session.password, setToken, setUser)
   }
 
-  function handleLogout() {
+  const handleLogout = () => {
     setToken(null);
     setUser(null);
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_ID_KEY);
     navigate("/");
   }
 
