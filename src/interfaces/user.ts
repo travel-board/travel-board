@@ -11,4 +11,11 @@ export interface IUser {
     age: string,
     avatar: string
 }
-  
+
+export interface IRegisterFieldValues {
+    name: string;
+    email: string;
+    password: string;
+    confirm: string;
+    avatar: string;
+  }
