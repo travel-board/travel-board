@@ -46,7 +46,7 @@ export const Modal = styled.div`
         h3{
             margin-top: 20px;
             margin-bottom: 20px;
-            color: black;
+            color: var(--primary);
         }
     }
 `

@@ -4,18 +4,18 @@ interface IInput {
     type: string,
     placeholder: string,
     button: boolean,
-    error?: boolean;
+    error?: string;
     message?: string,
     register?: any,
     children?: React.ReactNode,
     click?: () => {}
 }
 
-export const Input = ({ type, placeholder, button, error, message, children}:IInput) => {
+export const Input = ({ type,children, placeholder, button, error, message,register}:IInput) => {
     return(
         <BlockInput>
             <Inputs>
-                <input type={type} placeholder={placeholder}/>
+                <input type={type} placeholder={placeholder} {...register} />
                 {
                     button ? <button>{children}</button> : null
                 }

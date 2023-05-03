@@ -6,7 +6,7 @@ export const BlockInput = styled.div`
     align-items: center;
     span{
         color: red;
-
+        font-size: 12px;
     }
 `
 
@@ -54,6 +54,6 @@ export const Inputs = styled.div`
         cursor: pointer;
     }
     :has(input:focus){
-        border: 1px solid red;
+        border: 1px solid var(--gray-1);
     }
 `
