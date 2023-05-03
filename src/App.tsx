@@ -1,16 +1,12 @@
-import { GlobalStyles } from "./styles/global";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Router from "./routes/route";
+import { GlobalStyle } from "./styles/global"
 
 function App() {
+
   return (
-    <>
-      <GlobalStyles />
-      <Router />
-      <ToastContainer />
-    </>
-  );
+    <div className="foi" style={{background: 'black'}}>
+      <GlobalStyle />
+    </div>
+  )
 }
 
-export default App;
+export default App

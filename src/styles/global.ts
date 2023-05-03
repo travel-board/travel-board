@@ -1,7 +1,9 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyles = createGlobalStyle`
-:root{
+
+export const GlobalStyle = createGlobalStyle`
+    
+    :root{
     --primary: #26A59E;
     --secondary: #EF8738;
     --gray-1: #898989;
@@ -14,50 +16,38 @@ export const GlobalStyles = createGlobalStyle`
     --black: #000000;
     --primay-hover: #09857E;
     --secondary-hover: #E37008;
-
     font-size: 62.5%;
-}
-
-* {
-    margin:0;
-    padding: 0;
-    outline:0;
-    box-sizing: border-box;
+    }
+    * {
+        margin:0;
+        padding: 0;
+        outline:0;
+        box-sizing: border-box;
+        
+    }
+    body,html{
+        width: 100vw;
     
-}
-
-body,html{
-    width: 100vw;
-   
-}
-
-body{
-    background-color: var(--white);
-    justify-content: center;
-    display: flex;
-    color: var(--gray-1)
-}
-
-body, input, button {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.6rem;
-}
-
-button {
-    cursor: pointer;
-}
-
-input {
-    background-color: var(--gray-6);
-}
-
-#root{
-    width: 100%;
-}
-
-@media (max-width: 750px{
-    :root {
-        font-size: 60%;
-    } 
-})
-`;
+    }
+    body{
+        background-color: var(--white);
+        justify-content: center;
+        display: flex;
+        color: var(--gray-1)
+    }
+    body, input, button {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.6rem;
+    }
+    button {
+        cursor: pointer;
+    }
+    input {
+        background-color: var(--gray-6);
+    }
+    @media (max-width: 750px){
+        :root {
+            font-size: 60%;
+        } 
+    }
+`
