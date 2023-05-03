@@ -7,6 +7,7 @@ export const schema = z
       .string()
       .nonempty("Por favor preencha o email")
       .email("email inválido"),
+    avatar: z.string(),
     password: z
       .string()
       .nonempty("Por favor preencha a senha")
@@ -20,3 +21,7 @@ export const schema = z
     message: "As senhas não são iguais",
     path: ["confirm"],
   });
+
+  // const registerUser = schema
+
+  // export type schemaRegisterUser = z.infer <TypeOf registerUser>

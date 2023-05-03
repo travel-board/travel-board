@@ -2,7 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 import { userApi } from "../api/userApi";
-import { ILogin, IUser } from "../interfaces/user";
+import { ILogin, IRegisterFieldValues, IUser } from "../interfaces/user";
 import jwtDecode from "jwt-decode";
 
 
@@ -13,6 +13,7 @@ interface UserProviderProps {
 interface UserContextType {
   handleLogin(session: ILogin): void;
   handleLogout(): void;
+  registerUser(data: IRegisterFieldValues): void;
   loading: boolean;
   user: null | IUser;
   token: null | string;
@@ -83,9 +84,15 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     navigate("/");
   }
 
+  const registerUser = (data: IRegisterFieldValues) => {
+
+    Api.register(data)
+
+  }
+
   return (
     <UserContext.Provider
-      value={{ handleLogin, handleLogout, loading, user, token }}
+      value={{ handleLogin, handleLogout, registerUser, loading, user, token }}
     >
       {children}
     </UserContext.Provider>

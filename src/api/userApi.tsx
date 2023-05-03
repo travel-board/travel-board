@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { api } from "../services/api"
 import { toast } from 'react-toastify'
-import { IUser } from "../interfaces/user"
+import { IRegisterFieldValues, IUser } from "../interfaces/user"
 
 export const userApi = () => {
   
@@ -24,8 +24,19 @@ export const userApi = () => {
       })
       .catch(err => toast.error(err.response.data))
     }
+
+  const register =async (data: IRegisterFieldValues) => {
+    
+    api.post("/users", data)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.error(err))
+
+  }
   
   return{
-      login
+      login,
+      register
   }
 }
