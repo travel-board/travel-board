@@ -1,6 +1,7 @@
 import { BlockInput, Inputs } from "./styles"
 
 interface IInput {
+    id: string,
     type: string,
     placeholder: string,
     button: boolean,
@@ -14,9 +15,9 @@ export const Input = ({ type, placeholder, button, error,  register, children, c
     return(
         <BlockInput>
             <Inputs>
-                <input {...register} type={type} placeholder={placeholder}/>
+                <input type={type} placeholder={placeholder} {...register} />
                 {
-                    button ? <button onClick={click} >{children}</button> : null
+                    button ? <button onClick={click}>{children}</button> : null
                 }
             </Inputs>
             {

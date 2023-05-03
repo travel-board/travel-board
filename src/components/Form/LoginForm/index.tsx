@@ -1,7 +1,7 @@
 import { UserContext } from "../../../providers/UserProvider";
 import { Button } from "../../Button/index";
 import { Input } from "../../Input/index";
-import { schema } from "./validator";
+import { schema } from "../../../schemas/loginValidator";
 import * as api from "../../../services/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";

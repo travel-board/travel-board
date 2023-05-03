@@ -36,20 +36,6 @@ export const StyledLogin = styled.div`
     background-position: center center;
   }
 
-  .imgContainer > figure {
-    width: 100%;
-    flex-grow: 1;
-    border-radius: 1rem;
-    display: flex;
-  }
-
-  .imgContainer > figure > img {
-    border-radius: 1rem;
-    overflow-x: hidden;
-    align-self: center;
-    flex-grow: 1;
-  }
-
   figure {
     width: 80%;
   }
