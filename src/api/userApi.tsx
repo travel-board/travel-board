@@ -4,7 +4,9 @@ import { toast } from 'react-toastify'
 import { IUser } from "../interfaces/user"
 
 export const userApi = () => {
+  
   const navigate = useNavigate()
+
   const login = async (
       email: string, 
       password: string, 
