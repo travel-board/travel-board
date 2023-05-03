@@ -4,8 +4,8 @@ import { travelApi } from '../api/travelApi'
 import { IData } from '../interfaces/travel'
 
 interface IContextTravelData {
-    addTravel: (data: IData) => void,
-    editTravel: (data: IData) => void,
+    addTravel: (data: IData, value: (data: boolean) => void) => void,
+    editTravel: (data: IData, value: (data: boolean) => void) => void,
     travel: IData[]
 }
 
@@ -21,11 +21,11 @@ export const TravelProvider = ({ children }: TravelProviderDta) => {
 
     const Api = travelApi()
 
-    const addTravel = (data: IData) => {
-        Api.postTravel(data, setTravel, travel)
+    const addTravel = (data: IData, setOpenModal: (data: boolean) => void) => {
+        Api.postTravel(data, setTravel, travel, setOpenModal)
     }
-    const editTravel = (data: IData) => {
-        Api.patchTravel(data, setTravel, travel)
+    const editTravel = (data: IData, setOpenModal: (data: boolean) => void) => {
+        Api.patchTravel(data, setTravel, travel, setOpenModal)
     }
 
     return (

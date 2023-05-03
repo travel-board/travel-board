@@ -38,6 +38,7 @@ export const Inputs = styled.div`
     ::placeholder {
       color: #d9d9d9;
     }
+    -webkit-box-shadow: 0 0 0px 1000px #fafafa inset;
   }
   button {
     width: 30px;

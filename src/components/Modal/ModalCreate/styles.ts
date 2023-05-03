@@ -7,15 +7,16 @@ export const Modal = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    position: absolute;
+    background: #00000020;
     dialog{
         margin: 0 auto;
         padding: 0;
-        width: 350px;
+        width: 300px;
         height: 400px;
         background: #507701;
         color: #fff;
-        box-shadow: 0px 0px 15px black;
+        box-shadow: 0px 0px 15px #00000040;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -33,8 +34,8 @@ export const Modal = styled.div`
                 height: 30px;
                 width: 30px;
                 position: absolute;
-                right: 3px;
-                top: -15px;
+                right: 10px;
+                top: -5px;
                 background: transparent;
                 border: none;
                 border-radius: 4px;
@@ -43,8 +44,11 @@ export const Modal = styled.div`
                 justify-content: center;
             }
         }
+        @media(min-width: 425px){
+            width: 400px;
+        }
         h3{
-            margin-top: 20px;
+            margin-top: 30px;
             margin-bottom: 20px;
             color: var(--primary);
         }

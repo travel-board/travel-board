@@ -1,31 +1,57 @@
 import { api } from "../services/api"
 import { IData } from "../interfaces/travel"
-import { useUser } from "../hooks/useUser"
+import { toast } from "react-toastify"
 
 export const travelApi = () => {
 
-    /* const { token, user } = useUser() */
     const token = localStorage.getItem('@TOKEN')
-    const user = localStorage.getItem('@USER')
+    const user = localStorage.getItem('@USERID')
 
     api.defaults.headers.common.Authorization = `Bearer ${token}`
 
-    const postTravel = (data: IData, setTravel:(value: IData[]) => void, travel: IData[]) => {
-
+    const postTravel = (
+        data: IData, 
+        setTravel:(value: IData[]) => void, 
+        travel: IData[], 
+        setOpenModal: (value: boolean) => void) => {
             const formData = {
                 name: data.name,
                 category: data.category,
                 img: data.img,
                 cityCountry: data.cityCountry,
-                userId: 1,
+                userId: user,
             }
             api.post('travels', formData)
-            .then(res => setTravel([...travel, res.data]))
-            .catch(err => console.error(err))
+            .then(res => {
+                toast.success('Destino criado com sucesso')
+                setTimeout(() => {
+                    setOpenModal(false)
+                    setTravel([...travel, res.data])
+                },3000)                
+            })
+            .catch(err =>  toast.error(err?.response?.data))
     }
-    const patchTravel = (data: IData, setTravel:(value: IData[]) => void, travel: IData[]) => {
-            api.patch('travels', data)
-            .then(res => setTravel([...travel, res.data]))
+
+    const patchTravel = (
+        data: IData, 
+        setTravel:(value: IData[]) => void, 
+        travel: IData[], 
+        setOpenModal: (value: boolean) => void) => {
+            const formData = {
+                name: data.name,
+                category: data.category,
+                img: data.img,
+                cityCountry: data.cityCountry,
+                userId: user,
+            }
+            api.patch('travels', formData)
+            .then(res => {
+                toast.success('Destino criado com sucesso')
+                setTimeout(() => {
+                    setOpenModal(false)
+                    setTravel([...travel, res.data])
+                },3000)                
+            })
             .catch(err => console.error(err))
     }
 

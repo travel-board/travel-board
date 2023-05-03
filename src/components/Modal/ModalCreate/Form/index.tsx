@@ -6,19 +6,20 @@ import { useForm } from 'react-hook-form'
 import { useTravel } from "../../../../hooks/useTravel"
 
 interface Edit {
-    edit?: Boolean
+    edit?: Boolean,
+    setOpenModal: (data: boolean) => void
 }
 
-export const FormModal = ({ edit }: Edit) => {
+export const FormModal = ({ edit, setOpenModal }: Edit) => {
     
     const { register, handleSubmit, formState: { errors } } = useForm({});
     const { addTravel, editTravel } = useTravel()
 
-    const onSubmit = (formData:any) => {
+    const onSubmit = async (formData:any) => {
         if(!edit){
-            addTravel(formData)
+            await addTravel(formData, setOpenModal)
         }else{
-            editTravel(formData)
+            await editTravel(formData, setOpenModal)
         }
     }
     return(

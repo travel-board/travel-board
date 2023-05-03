@@ -4,3 +4,4 @@ export interface IData {
     cityCountry: string, 
     category: string
 }
+
