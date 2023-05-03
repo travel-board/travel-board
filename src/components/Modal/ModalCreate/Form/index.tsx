@@ -37,7 +37,7 @@ export const FormModal = ({ edit }: Edit) => {
                     <option>Natureza</option>
                 </select>
             </div>
-            <Button classN="blue" types="submit">Adiconar</Button>
+            <Button classN="blue" types="submit">Adicionar</Button>
         </Form>
     )
 }

@@ -20,3 +20,7 @@ export async function login(email: string, password: string): Promise<Session> {
   const response = await api.post("/login", { email, password });
   return response.data as Session;
 }
+export function getUser(token: string, userId: string) {
+  throw new Error("Function not implemented.");
+}
+
