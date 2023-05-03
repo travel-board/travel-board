@@ -4,8 +4,11 @@ import { StyledForm } from "../LoginForm/StyledForm";
 import { schema } from "../../../pages/RegisterUser/validator.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { UserContext } from "../../../providers/UserProvider.tsx";
+
 
 
 interface RegisterFieldValues {
@@ -15,6 +18,12 @@ interface RegisterFieldValues {
     confirm: string;
   }
 
+interface IUserContext {
+    user: RegisterFieldValues | null;
+    setUser: React.Dispatch<React.SetStateAction<RegisterFieldValues | null>>;
+    registerUser: (dataRegister: RegisterFieldValues) => Promise<void>;
+  }
+
 export const RegisterForm = () => {
     const {
         register,
@@ -22,9 +31,15 @@ export const RegisterForm = () => {
         formState: { errors },
       } = useForm<RegisterFieldValues>({ resolver: zodResolver(schema) 
     });
+
+    const { registerUser } = useContext(UserContext);
+
+    const renderSubmit: SubmitHandler<RegisterFieldValues> = (data) => {
+        registerUser(data)
+      }
   
     return (
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit(renderSubmit)}>
         <Input
           type="text"
           id="name"
