@@ -3,7 +3,7 @@ import { Button } from "../../../Button"
 import { Form } from "./styles"
 
 import { useForm } from 'react-hook-form'
-import { useTravel } from "../../../../hook/useTravel"
+import { useTravel } from "../../../../hooks/useTravel"
 
 interface Edit {
     edit?: Boolean

@@ -2,13 +2,15 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { Session, User } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import * as api from "../services/api";
+import { userApi } from "../api/userApi";
+import { ILogin } from "../interfaces/user";
 
 interface UserProviderProps {
   children: ReactNode | ReactNode[];
 }
 
 interface UserContextType {
-  handleLogin(session: Session): void;
+  handleLogin(session: ILogin): void;
   handleLogout(): void;
   loading: boolean;
   user: null | User;
@@ -30,6 +32,8 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  const Api = userApi()
+
   useEffect(() => {
     if (token == null) {
       localStorage.removeItem(TOKEN_KEY);
@@ -50,23 +54,25 @@ export const UserProvider = ({ children }: UserProviderProps) => {
       if (token != null) {
         const userId = localStorage.getItem(USER_ID_KEY) as string;
 
-        // const user = await api.getUser(token, userId).catch(() => null);
-        // if (user != null) {
-        //   setUser(user);
-        //   navigate("/home");
-        // } else {
-        //   setToken(null);
-        // }
+        const user = await api.getUser(token, userId);
+        if (user != null) {
+          setUser(user);
+          navigate("/home");
+        } else {
+          setToken(null);
+        }
       }
       setLoading(false);
     }
     fetchData();
   }, []);
 
-  function handleLogin(session: Session) {
-    setToken(session.accessToken);
+  function handleLogin(session:ILogin) {
+    Api.login(session.email, session.password)
+    console.log(session)
+    /* setToken(session.accessToken);
     setUser(session.user);
-    navigate("/home");
+     */
   }
 
   function handleLogout() {

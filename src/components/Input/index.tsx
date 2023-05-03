@@ -1,7 +1,6 @@
 import { BlockInput, Inputs } from "./styles"
 
 interface IInput {
-    id: string,
     type: string,
     placeholder: string,
     button: boolean,
