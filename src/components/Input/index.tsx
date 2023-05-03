@@ -1,27 +1,27 @@
 import { BlockInput, Inputs } from "./styles"
 
 interface IInput {
+    id: string,
     type: string,
     placeholder: string,
     button: boolean,
     error?: string;
-    message?: string,
     register?: any,
     children?: React.ReactNode,
-    click?: () => {}
+    click?: () => void
 }
 
-export const Input = ({ type,children, placeholder, button, error, message,register}:IInput) => {
+export const Input = ({ type, placeholder, button, error,  register, children, click}:IInput) => {
     return(
         <BlockInput>
             <Inputs>
                 <input type={type} placeholder={placeholder} {...register} />
                 {
-                    button ? <button>{children}</button> : null
+                    button ? <button onClick={click}>{children}</button> : null
                 }
             </Inputs>
             {
-                error ? <span>{message}</span> : null
+                error ? <span>{error}</span> : null
             }
         </BlockInput>
     )
