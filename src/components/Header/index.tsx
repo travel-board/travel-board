@@ -7,6 +7,7 @@ import { StyledHeader } from "./style";
 export const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
+
   return (
     <StyledHeader>
       <div className="heading">
@@ -16,6 +17,25 @@ export const Header = () => {
         <button className="menuBtn" onClick={() => setOpenMenu(!openMenu)}>
           <AiOutlineMenu className="menuIcon" />
         </button>
+        <div className="headerNavDesktop">
+          <div className="searchContainer">
+            <input className="searchBar" type="text" placeholder="Search" />
+            <span className="searchIcon"><AiOutlineSearch color="white" /></span>
+          </div>
+          <div className="userIconAndLogoutBtn">
+            <figure className="userIcon">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                alt="UserIcon"
+              />
+            </figure>
+            <button className="exitButton">
+              <div className="closeContainer">
+                <RxExit color="hsla(177, 63%, 40%, 1)" className="exitIcon" />
+              </div>
+            </button>
+          </div>
+        </div>
       </div>
 
       {openMenu ? (
@@ -41,6 +61,8 @@ export const Header = () => {
           </div>
         </div>
       ) : null}
+    
+    
     </StyledHeader>
   );
 };
