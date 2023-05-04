@@ -10,6 +10,15 @@ export const travelApi = () => {
 
     api.defaults.headers.common.Authorization = `Bearer ${token}`
 
+    
+    const getTravel = (setTravel:(data: IData[]) => void) => {
+        api.get('travels')
+        .then(res => {
+            setTravel(res.data)
+        })
+        .catch(err => toast.error(err?.response?.data))
+    }
+
     const postTravel = (
         data: IData, 
         setTravel:(value: IData[]) => void, 
@@ -65,7 +74,9 @@ export const travelApi = () => {
         .catch(err => console.error(err))
     }
 
+
     return{
+        getTravel,
         postTravel,
         patchTravel,
         deleteTravel

@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 export const StyledLi = styled.li`
 list-style: none;
-width: 320px;
-max-width: 300px;
+width: 280px;
 display: flex;
 flex-direction: column;
 border-radius: 5px;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+box-shadow: 0px 0px 7px #00000040;
 position: relative;
 
 .travelInfo{

@@ -1,9 +1,10 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { travelApi } from '../api/travelApi'
 
 import { IData } from '../interfaces/travel'
 
 interface IContextTravelData {
+    getTravel: () => void,
     addTravel: (data: IData, value: (data: boolean) => void) => void,
     editTravel: (data: IData, value: (data: boolean) => void) => void,
     deleteTravel: (id:number) => void,
@@ -29,12 +30,16 @@ export const TravelProvider = ({ children }: TravelProviderDta) => {
     const editTravel = (data: IData, setOpenModal: (data: boolean) => void) => {
         Api.patchTravel(data, setTravel, travel, setOpenModal)
     }
+    const getTravel = () => {
+        Api.getTravel(setTravel)
+    }
+    
     const deleteTravel = ( id: number ) => {
         Api.deleteTravel(id);
     }
 
     return (
-        <ContextTravel.Provider value={{ travel, setTravel,  addTravel,  editTravel, deleteTravel }} >
+        <ContextTravel.Provider value={{ travel, setTravel, getTravel, addTravel,  editTravel, deleteTravel }} >
             {children}
         </ContextTravel.Provider>
     )

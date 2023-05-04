@@ -3,10 +3,12 @@ import { RxExit } from "react-icons/rx";
 import logo from "../../assets/logo.svg";
 import { useState } from "react";
 import { StyledHeader } from "./style";
+import { useUser } from "../../hooks/useUser";
 
 export const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
+  const { handleLogout } = useUser()
 
   return (
     <StyledHeader>
@@ -29,7 +31,7 @@ export const Header = () => {
                 alt="UserIcon"
               />
             </figure>
-            <button className="exitButton">
+            <button className="exitButton" onClick={handleLogout}>
               <div className="closeContainer">
                 <RxExit color="hsla(177, 63%, 40%, 1)" className="exitIcon" />
               </div>

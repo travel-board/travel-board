@@ -28,7 +28,7 @@ export const FormModal = ({ edit, setOpenModal }: Edit) => {
             <Input type="text" placeholder="Cidade ou país" button={false} register={register('cityCountry')} />
             <Input type="text" placeholder="Link para imagem " button={false} register={register('img')} />
             <div className="select">
-                <select {...register('category')}>
+                <select {...register('category')} defaultValue="Sem Categoria" >
                     <option selected={true} disabled>Selecione uma categoria</option>
                     <option>Praia</option>
                     <option>Montanha</option>
