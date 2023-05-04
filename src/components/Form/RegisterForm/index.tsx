@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useContext } from "react";
-import { UserContext } from "../../../providers/UserProvider.tsx";
+import { UserContext } from "../../../providers/_UserProvider.tsx";
 import { IRegisterFieldValues } from "../../../interfaces/user.ts";
 import { schema } from "../../../schemas/RegisterSchema.ts";
 

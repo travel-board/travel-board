@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { LoginPage } from "../pages/Login";
 import { Home } from "../pages/Home";
-import { TravelProvider } from "../providers/TravelProvider";
+import { TravelProvider } from "../providers/_TravelProvider";
 import { RegisterPage } from "../pages/RegisterUser";
 import { ProtectedRoutes } from "./protectedRoutes";
 
