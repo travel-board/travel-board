@@ -1,9 +1,10 @@
 import { api } from "../services/api"
 import { IData } from "../interfaces/travel"
 import { toast } from "react-toastify"
+import { useTravel } from "../hooks/useTravel"
 
 export const travelApi = () => {
-
+    const { travel, setTravel } = useTravel();
     const token = localStorage.getItem('@TOKEN')
     const user = localStorage.getItem('@USERID')
 
@@ -54,9 +55,19 @@ export const travelApi = () => {
             })
             .catch(err => console.error(err))
     }
+    
+    const deleteTravel = (id: number) => {
+        api.delete(`travels/${id}`)
+        .then(res => {
+            console.log(res)
+            setTravel(travel.filter(travel => travel.id !== id))
+        })
+        .catch(err => console.error(err))
+    }
 
     return{
         postTravel,
-        patchTravel
+        patchTravel,
+        deleteTravel
     }
 }
