@@ -28,7 +28,7 @@ export const userApi = () => {
   const register =async (data: IRegisterFieldValues) => {
     
     api.post("/users", data)
-    .then(res => {
+    .then(() => {
       toast.success("Usuário cadastrado com sucesso!")
       setTimeout(() => {
         navigate("/login")
