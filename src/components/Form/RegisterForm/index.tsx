@@ -4,11 +4,9 @@ import { StyledForm } from "../LoginForm/StyledForm";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import { useContext } from "react";
-import { UserContext } from "../../../providers/UserProvider.tsx";
 import { IRegisterFieldValues } from "../../../interfaces/user.ts";
 import { schema } from "../../../schemas/RegisterSchema.ts";
+import { useUser } from "../../../hooks/useUser.ts";
 
 export const RegisterForm = () => {
   const {
@@ -17,7 +15,7 @@ export const RegisterForm = () => {
     formState: { errors },
   } = useForm<IRegisterFieldValues>({ resolver: zodResolver(schema) });
 
-  const { registerUser } = useContext(UserContext);
+  const { registerUser } = useUser();
 
   const renderSubmit: SubmitHandler<IRegisterFieldValues> = (data) => {
     registerUser(data);

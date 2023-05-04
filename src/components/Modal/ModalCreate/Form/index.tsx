@@ -13,7 +13,7 @@ interface Edit {
 
 export const FormModal = ({ id, edit, setOpenModal }: Edit) => {
     
-    const { register, handleSubmit, formState: { errors } } = useForm({});
+    const { register, handleSubmit } = useForm({});
     const { addTravel, editTravel } = useTravel()
 
     const onSubmit = async (formData:any) => {
