@@ -55,8 +55,17 @@ export const travelApi = () => {
             .catch(err => console.error(err))
     }
 
+    const getTravel = (setTravel:(data: IData[]) => void, travel: IData[]) => {
+        api.get('travels')
+        .then(res => {
+            setTravel(res.data)
+        })
+        .catch(err => toast.error(err?.response?.data))
+    }
+
     return{
         postTravel,
-        patchTravel
+        patchTravel,
+        getTravel
     }
 }

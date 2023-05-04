@@ -63,7 +63,11 @@ export const UserProvider = ({ children }: UserProviderProps) => {
               setToken(res.data.accessToken)
               navigate('/')
           })
-          .catch(err => err)
+          .catch(err => {
+            localStorage.removeItem('@TOKEN')
+            localStorage.removeItem('@USERID')
+            navigate('/login')
+          })
           .finally(() => setTimeout(() => {
               setLoading(false)
           }, 2000))

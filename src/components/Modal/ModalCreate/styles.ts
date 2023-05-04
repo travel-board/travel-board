@@ -9,6 +9,7 @@ export const Modal = styled.div`
     justify-content: center;
     position: absolute;
     background: #00000020;
+    z-index: 1;
     dialog{
         margin: 0 auto;
         padding: 0;

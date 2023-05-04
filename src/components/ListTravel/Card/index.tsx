@@ -9,7 +9,7 @@ interface ICard {
     location: string;
 }
 
-export const Card = ({img,name,category,location}: ICard) => {
+export const Card = ({ img, name, category, location }: ICard) => {
 
     return (
         <StyledLi>

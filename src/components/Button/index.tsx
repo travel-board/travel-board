@@ -9,7 +9,7 @@ interface IStyle {
 }
 
 export const Button = ({ classN, types, children, click }:IStyle) => (
-    <ButtonBlock>
+    <ButtonBlock className="addBtn">
         <button type={types} onClick={click} className={classN}>{children}</button>
     </ButtonBlock>
 )

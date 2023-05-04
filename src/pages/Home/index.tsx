@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "../../components/Button"
 import { ModalCreateEdit } from "../../components/Modal/ModalCreate"
 import { BodyHome } from "./styles"
 import { useUser } from "../../hooks/useUser"
+import { ListTravel } from "../../components/ListTravel"
+import { useTravel } from "../../hooks/useTravel"
 
 
 export const Home = () => {
@@ -10,6 +12,11 @@ export const Home = () => {
     const [edit, setEdit] = useState(false)
 
     const { user } = useUser();
+    const { getTravel, travel } = useTravel()
+
+    useEffect(() => {
+        getTravel()
+    },[])
     
     const handleModal = () => {
         setOpenModal(true)
@@ -19,7 +26,7 @@ export const Home = () => {
     return(
         <BodyHome>
             <ModalCreateEdit openModal={openModal} setOpenModal={setOpenModal} edit={edit} />
-            <Button click={handleModal} classN="orange">Adicionar</Button>
+            <ListTravel handleModal={handleModal} />
         </BodyHome>
     )
 }

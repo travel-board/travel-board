@@ -1,3 +1,4 @@
 import styled from 'styled-components'
 
-export const BodyHome = styled.div``
+export const BodyHome = styled.div`
+`
