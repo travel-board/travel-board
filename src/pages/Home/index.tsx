@@ -3,6 +3,7 @@ import { Button } from "../../components/Button"
 import { ModalCreateEdit } from "../../components/Modal/ModalCreate"
 import { BodyHome } from "./styles"
 import { useUser } from "../../hooks/useUser"
+import { Header } from "../../components/Header"
 
 
 export const Home = () => {
@@ -18,6 +19,7 @@ export const Home = () => {
 
     return(
         <BodyHome>
+            <Header />
             <ModalCreateEdit openModal={openModal} setOpenModal={setOpenModal} edit={edit} />
             <Button click={handleModal} classN="orange">Adicionar</Button>
         </BodyHome>
