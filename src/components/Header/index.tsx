@@ -35,8 +35,8 @@ export const Header = ({ onSearch }: HeaderProps) => {
           <AiOutlineMenu className="menuIcon" />
         </button>
         <div className="headerNavDesktop">
-          <div className="searchContainer">
-            <form onSubmit={handleSearch}>
+          <form onSubmit={handleSearch}>
+            <div className="searchContainer">
               <input
                 className="searchBar"
                 type="text"
@@ -46,8 +46,8 @@ export const Header = ({ onSearch }: HeaderProps) => {
               <button className="searchIcon">
                 <AiOutlineSearch color="white" />
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
           <div className="userIconAndLogoutBtn">
             <figure className="userIcon">
               <img

@@ -27,7 +27,9 @@ export const Home = () => {
   }, [travel, searchTerm]);
 
   useEffect(() => {
-    getTravel();
+    if (!openModal && !openModalDelete) {
+      getTravel();
+    }
   }, [openModalDelete, openModal]);
 
   const handleModal = () => {
