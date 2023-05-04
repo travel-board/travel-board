@@ -11,7 +11,7 @@ export const schema = z
     password: z
       .string()
       .nonempty("Por favor preencha a senha")
-      .min(8)
+      .min(8, "A senha deve conter pelo menos 8 caracteres")
       .regex(/\d+/, "A senha deve conter pelo menos um número")
       .regex(/[a-z]+/i, "A senha deve conter pelo menos uma letra")
       .regex(/[\W_]+/, "A senha deve conter pelo menos um símbolo"),
@@ -22,6 +22,6 @@ export const schema = z
     path: ["confirm"],
   });
 
-  // const registerUser = schema
+// const registerUser = schema
 
-  // export type schemaRegisterUser = z.infer <TypeOf registerUser>
+// export type schemaRegisterUser = z.infer <TypeOf registerUser>
