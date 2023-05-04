@@ -37,7 +37,18 @@ export const ListTravel = ({
                         <div>
                             {
                                 i.userId === UserId ? (
-                                    <Card setEdit={setEdit} id={i?.id} setGetTravelId={setGetTravelId} setOpenModalDelete={setOpenModalDelete} handleModal={handleModal} key={key} img={i.img} name={i.name} category={i.category} location={i.cityCountry} />
+                                    <Card 
+                                        setEdit={setEdit} 
+                                        id={i?.id} 
+                                        setGetTravelId={setGetTravelId} 
+                                        setOpenModalDelete={setOpenModalDelete} 
+                                        handleModal={handleModal} 
+                                        key={key} 
+                                        img={i.img} 
+                                        name={i.name} 
+                                        category={i.category} 
+                                        location={i.cityCountry} 
+                                    />
                                 ) : null
                             }
                         </div>

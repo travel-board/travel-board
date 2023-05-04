@@ -8,6 +8,7 @@ export const StylesListTravel = styled.div`
     justify-content: center;
     .addBtn{
         width: 10%;
+        display: none;
     }
     ul{ 
         width: 100vw;
@@ -16,7 +17,6 @@ export const StylesListTravel = styled.div`
         justify-content: center;
         align-items: center;
         gap: 20px;
-        padding: 20px 0;
         box-sizing: border-box;
     }
     @media(min-width: 1000px){
@@ -36,11 +36,12 @@ export const StylesListTravel = styled.div`
             justify-content: center;
         }       
         .addBtn{
-            width: 100%;
+            width: 95%;
             display: flex;
             gap: 20px;
             align-content: center;
             justify-content: end;
+            margin-right: 100px;
             button{
             width: 100px;
             height: 30px;
