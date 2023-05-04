@@ -1,13 +1,23 @@
 import { api } from "../services/api"
 import { IData } from "../interfaces/travel"
 import { toast } from "react-toastify"
+import { useTravel } from "../hooks/useTravel"
 
 export const travelApi = () => {
-
+    const { travel, setTravel } = useTravel();
     const token = localStorage.getItem('@TOKEN')
     const user = localStorage.getItem('@USERID')
 
     api.defaults.headers.common.Authorization = `Bearer ${token}`
+
+    
+    const getTravel = (setTravel:(data: IData[]) => void) => {
+        api.get('travels')
+        .then(res => {
+            setTravel(res.data)
+        })
+        .catch(err => toast.error(err?.response?.data))
+    }
 
     const postTravel = (
         data: IData, 
@@ -54,18 +64,21 @@ export const travelApi = () => {
             })
             .catch(err => console.error(err))
     }
-
-    const getTravel = (setTravel:(data: IData[]) => void, travel: IData[]) => {
-        api.get('travels')
+    
+    const deleteTravel = (id: number) => {
+        api.delete(`travels/${id}`)
         .then(res => {
-            setTravel(res.data)
+            console.log(res)
+            setTravel(travel.filter(travel => travel.id !== id))
         })
-        .catch(err => toast.error(err?.response?.data))
+        .catch(err => console.error(err))
     }
 
+
     return{
+        getTravel,
         postTravel,
         patchTravel,
-        getTravel
+        deleteTravel
     }
 }

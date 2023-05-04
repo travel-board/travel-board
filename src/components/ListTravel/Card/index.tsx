@@ -3,13 +3,15 @@ import { StyledLi } from "./styles";
 
 
 interface ICard {
-    img: string;
-    name: string;
-    category: string;
-    location: string;
+    img: string,
+    name: string,
+    category: string,
+    location: string,
+    setOpenModalDelete: (data: boolean) => void,
+    handleModal: () => void,
 }
 
-export const Card = ({ img, name, category, location }: ICard) => {
+export const Card = ({ img, name, category, location, setOpenModalDelete,  handleModal}: ICard) => {
 
     return (
         <StyledLi>
@@ -22,8 +24,8 @@ export const Card = ({ img, name, category, location }: ICard) => {
                 <span><HiOutlineLocationMarker color="#26A59E" /><p className="location">{location}</p></span>
             </div>
             <div className="buttons-container">
-                <button className="edit"><HiPencil color="white"/></button>
-                <button className="delete"><HiTrash color="white"/></button>
+                <button className="edit" onClick={handleModal}><HiPencil color="white"/></button>
+                <button className="delete" onClick={() => setOpenModalDelete(true)}><HiTrash color="white"/></button>
             </div>
         </StyledLi>
     )

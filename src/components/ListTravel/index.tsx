@@ -4,10 +4,11 @@ import { Card } from "./Card"
 import { StylesListTravel } from "./styles"
 
 interface IListTravel{
-    handleModal: () => void
+    handleModal: () => void,
+    setOpenModalDelete: (data: boolean) => void
 }
 
-export const ListTravel = ({handleModal}:IListTravel) => {
+export const ListTravel = ({handleModal, setOpenModalDelete}:IListTravel) => {
 
     const { travel } = useTravel()
     return(
@@ -20,7 +21,7 @@ export const ListTravel = ({handleModal}:IListTravel) => {
                 </div>
                 {
                     travel.map((i, key) => (
-                        <Card key={key} img={i.img} name={i.name} category={i.category} location={i.cityCountry} />
+                        <Card setOpenModalDelete={setOpenModalDelete} handleModal={handleModal} key={key} img={i.img} name={i.name} category={i.category} location={i.cityCountry} />
                     ))
                 }
            </ul>

@@ -50,6 +50,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         if(!token){
             return setTimeout(() => {
                 setLoading(false)
+                localStorage.removeItem('@USERID')
             }, 2000)
         }
         
@@ -61,12 +62,11 @@ export const UserProvider = ({ children }: UserProviderProps) => {
           .then(res => {
               setUser(res.data.user)
               setToken(res.data.accessToken)
-              navigate('/')
+              navigate('/home')
           })
           .catch(err => {
             localStorage.removeItem('@TOKEN')
             localStorage.removeItem('@USERID')
-            navigate('/login')
           })
           .finally(() => setTimeout(() => {
               setLoading(false)
@@ -74,7 +74,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
       } 
 
       loadUser()
-  },[])
+  },[loading, token, user])
 
   const handleLogin = (session:ILogin) => {
     Api.login(session.email, session.password, setToken, setUser)
