@@ -38,20 +38,20 @@ export const Inputs = styled.div`
     ::placeholder {
       color: #d9d9d9;
     }
-    -webkit-box-shadow: 0 0 0px 1000px #fafafa inset;
+    -webkit-box-shadow: 0 0 0px 1000px var(--gray-6) inset;
   }
   button {
     width: 30px;
     height: 30px;
     border: none;
-    background: #ef8f38;
+    background: var(--secondary);
     border-radius: 50%;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     :hover {
-      background: #e37008;
+      background: var(--secondary-hover);
     }
     cursor: pointer;
   }

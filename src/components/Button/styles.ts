@@ -17,21 +17,21 @@ export const ButtonBlock = styled.div`
         font-weight: 700;
         cursor: pointer;
         :hover{
-            background: #09857E;
+            background: var(--primay-hover);
         }
     }
     .blue{
-        background: #26A59E;
+        background: var(--primary);
         color: white;
         :hover{
-            background: #09857E;
+            background: var(--primay-hover);
         }
     }
     .grey{
-        background: #E4E4E4;
-        color: #898989;
+        background: var(--gray-4);
+        color: var(--gray-1);
         :hover{
-            background: #B1B2B2;
+            background: var(--gray-2);
             color: white;
         }
     }

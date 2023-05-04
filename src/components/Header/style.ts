@@ -139,7 +139,6 @@ export const StyledHeader = styled.header`
       background-color: white;
       justify-content: center;
       gap: 100px;
-      z-index: 1;
       .searchContainer {
         display: flex;
         width: 262px;
@@ -149,8 +148,7 @@ export const StyledHeader = styled.header`
         justify-content: center;
         border-radius: 34px;
         padding: 0 5px;
-        z-index: 1;
-        background-color: white;
+        background-color:  var(--gray-6);
 
         .searchIcon {
           display: flex;

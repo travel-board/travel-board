@@ -7,7 +7,7 @@ export const Modal = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     background: #00000020;
     z-index: 1;
     dialog{

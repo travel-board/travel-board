@@ -22,5 +22,23 @@ h2{
     text-align: center;
     font-size: 20px;
 }
+    button{
+        height: 40px;
+    }
+    .blue{
+        background: var(--gray-2);
+        :hover{
+            background: red;
+            color: white;
+        }
+    }
+    .gray{
+        background: var(--gray-2);
+        color: white;
+        :hover{
+            background: (--primary);
+            color: white;
+        }
+    }
 
 `

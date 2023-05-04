@@ -3,12 +3,14 @@ import { FormModal } from './Form'
 import { AiOutlineClose } from 'react-icons/ai'
 
 interface IFormModal {
+    id: string | number | undefined,
     openModal: boolean,
     setOpenModal: (data: boolean) => void,
     edit: boolean
 }
 
-export const ModalCreateEdit = ({openModal, setOpenModal, edit}:IFormModal) => {
+export const ModalCreateEdit = ({id, openModal, setOpenModal, edit}:IFormModal) => {
+    console.log(edit)
     return(
         <Modal style={openModal ? { display: 'flex' } : { display: 'none' }}>
            <dialog>
@@ -17,8 +19,10 @@ export const ModalCreateEdit = ({openModal, setOpenModal, edit}:IFormModal) => {
                         <AiOutlineClose size={20} />
                     </button>
                 </div>
-                <h3>Adicionar novo local</h3>
-                <FormModal setOpenModal={setOpenModal} edit={edit} />
+               {
+                edit ? <h3>Editar destino</h3> : <h3>Adicionar novo local</h3>
+               }
+                <FormModal id={id} setOpenModal={setOpenModal} edit={edit} />
            </dialog>
         </Modal>
     )

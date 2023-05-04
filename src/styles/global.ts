@@ -27,15 +27,14 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 body,html{
-    width: 100vw;
-   
 }
 
 body{
     background-color: var(--white);
     justify-content: center;
     display: flex;
-    color: var(--gray-1)
+    color: var(--gray-1);
+    overflow-x: hidden;
 }
 
 body, input, button {
@@ -53,11 +52,12 @@ input {
 
 #root{
     width: 100%;
+    overflow-y: hidden;
 }
 
-@media (max-width: 750px{
+@media (max-width: 750px){
     :root {
         font-size: 60%;
     } 
-})
+}
 `;

@@ -9,6 +9,7 @@ import { ModalDelete } from "../../components/Modal/ModalDelete"
 
 export const Home = () => {
     const [openModal, setOpenModal] = useState(false)
+    const [getTravelId, setGetTravelId] = useState<string | number | undefined>('')
     const [openModalDelete, setOpenModalDelete] = useState(false);
     const [edit, setEdit] = useState(false)
 
@@ -16,19 +17,18 @@ export const Home = () => {
 
     useEffect(() => {
         getTravel()
-    },[])
+    },[openModalDelete, openModal])
     
     const handleModal = () => {
         setOpenModal(true)
-        setEdit(false)
     }
 
     return(
         <BodyHome>
-            <ModalDelete id={1} openModalDelete={openModalDelete} setOpenModalDelete={setOpenModalDelete}/>
+            <ModalDelete id={getTravelId} openModalDelete={openModalDelete} setOpenModalDelete={setOpenModalDelete}/>
+            <ModalCreateEdit id={getTravelId} openModal={openModal} setOpenModal={setOpenModal} edit={edit} />
             <Header />
-            <ModalCreateEdit openModal={openModal} setOpenModal={setOpenModal} edit={edit} />
-            <ListTravel setOpenModalDelete={setOpenModalDelete} handleModal={handleModal} />
+            <ListTravel setEdit={setEdit} setGetTravelId={setGetTravelId} setOpenModalDelete={setOpenModalDelete} handleModal={handleModal} />
         </BodyHome>
     )
 }
