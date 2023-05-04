@@ -30,7 +30,7 @@ export const StylesListTravel = styled.div`
             padding-inline: 20px;
             box-sizing: border-box;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 300px 300px 300px;
             gap: 20px;
             align-items: center;
             justify-content: center;
@@ -42,7 +42,7 @@ export const StylesListTravel = styled.div`
             align-content: center;
             justify-content: end;
             button{
-            width: 50%;
+            width: 100px;
             height: 30px;
             background: var(--secondary);
             font-size: 16px;

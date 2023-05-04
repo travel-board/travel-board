@@ -2,6 +2,7 @@ import { api } from "../services/api"
 import { IData } from "../interfaces/travel"
 import { toast } from "react-toastify"
 import { useTravel } from "../hooks/useTravel"
+import { date } from "zod"
 
 export const travelApi = () => {
     const { travel, setTravel } = useTravel();
@@ -43,35 +44,41 @@ export const travelApi = () => {
     }
 
     const patchTravel = (
+        id: string | number | undefined,
         data: IData, 
         setTravel:(value: IData[]) => void, 
         travel: IData[], 
         setOpenModal: (value: boolean) => void) => {
-            const formData = {
-                name: data.name,
-                category: data.category,
-                img: data.img,
-                cityCountry: data.cityCountry,
-                userId: user,
-            }
-            api.patch('travels', formData)
+            var formData:any = new Object();
+            for (const [key, value] of Object.entries(data)) {
+                if(value !== ''){
+                    formData[key] = value;
+                }
+            } 
+            api.patch(`travels/${id}`, formData)
             .then(res => {
-                toast.success('Destino criado com sucesso')
+                toast.success('Destino editado com sucesso')
                 setTimeout(() => {
                     setOpenModal(false)
                     setTravel([...travel, res.data])
                 },3000)                
             })
-            .catch(err => console.error(err))
+            .catch(err => toast.error(err?.response?.data))
     }
     
-    const deleteTravel = (id: number) => {
+    const deleteTravel = (
+        id: string | number | undefined, 
+        setOpenModalDelete: (data:boolean) => void,
+        travel: IData[]) => {
         api.delete(`travels/${id}`)
-        .then(res => {
-            console.log(res)
-            setTravel(travel.filter(travel => travel.id !== id))
+        .then(res => {             
+            toast.success('Destino editado com sucesso')
+            setTimeout(() => {
+                setOpenModalDelete(false)
+                setTravel(travel.filter(travel => travel.id !== id))
+            },3000)  
         })
-        .catch(err => console.error(err))
+        .catch(err => toast.error(err?.response?.data))
     }
 
 

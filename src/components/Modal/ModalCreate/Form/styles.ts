@@ -16,7 +16,7 @@ export const Form = styled.form`
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    background: #fafafa;
+    background: var(--gray-6);
     gap: 10px;
     position: relative;
     -webkit-appearance: none;
@@ -33,7 +33,7 @@ export const Form = styled.form`
       padding-left: 14px;
       padding-right: 5px;
       box-sizing: border-box;
-      background: #fafafa;
+      background: var(--gray-6);
       gap: 10px;
       position: relative;
       -webkit-appearance: none;

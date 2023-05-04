@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledLi = styled.li`
 list-style: none;
 width: 280px;
+height: 260px;
 display: flex;
 flex-direction: column;
 border-radius: 5px;
@@ -81,10 +82,13 @@ position: relative;
 
 figure{
     margin: 0;
+    height: 140px;
     width: 100%;
     border-radius: 5px;
+    margin-bottom: 20px;
     img{
         width: 100%;
+        height: 100%;
         border-radius: 5px 5px 0 0;
     }
 
