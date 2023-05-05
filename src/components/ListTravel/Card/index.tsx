@@ -1,55 +1,61 @@
-import { HiPencil,HiTrash,HiOutlineLocationMarker } from "react-icons/hi";
+import { HiPencil, HiTrash, HiOutlineLocationMarker } from "react-icons/hi";
 import { StyledLi } from "./styles";
-
+import { IData } from "../../../interfaces/travel";
+import { FallbackTripImage } from "../../FallbackTripImage";
 
 interface ICard {
-    id: string | number | undefined,
-    img: string,
-    name: string,
-    category: string,
-    location: string,
-    setOpenModalDelete: (data: boolean) => void,
-    handleModal: () => void,
-    setGetTravelId: (data: number | string | undefined) => void,
-    setEdit: (data: boolean) => void
+  trip: IData;
+
+  setOpenModalDelete: (data: boolean) => void;
+  handleModal: () => void;
+  setGetTravelId: (data: number | string | undefined) => void;
+  setEdit: (data: boolean) => void;
 }
 
-export const Card = ({ 
-    id, 
-    img, 
-    name, 
-    category, 
-    location, 
-    setOpenModalDelete,  
-    handleModal, 
-    setGetTravelId,
-    setEdit}: ICard) => {
+export const Card = ({
+  trip,
 
-    const handleDelete = () => {
-        setOpenModalDelete(true)
-        setGetTravelId(id)
-    }
+  setOpenModalDelete,
+  handleModal,
+  setGetTravelId,
+  setEdit,
+}: ICard) => {
+  const handleDelete = () => {
+    setOpenModalDelete(true);
+    setGetTravelId(trip.id);
+  };
 
-    const handleEditModal = () => {
-        setGetTravelId(id)
-        setEdit(true)
-        handleModal()
-    }
+  const handleEditModal = () => {
+    setGetTravelId(trip.id);
+    setEdit(true);
+    handleModal();
+  };
 
-    return (
-        <StyledLi>
-            <figure>
-                <img src={img} alt={name} />
-            </figure>
-            <div className="travelInfo">
-                <p className="category">{category}</p>
-                <h2>{name}</h2>
-                <span><HiOutlineLocationMarker color="#26A59E" /><p className="location">{location}</p></span>
-            </div>
-            <div className="buttons-container">
-                <button className="edit" onClick={handleEditModal}><HiPencil color="white"/></button>
-                <button className="delete" onClick={handleDelete}><HiTrash color="white"/></button>
-            </div>
-        </StyledLi>
-    )
-}
+  return (
+    <StyledLi>
+      <figure>
+        {trip.img && trip.img.length ? (
+          <img src={trip.img} alt={trip.name} />
+        ) : (
+          <FallbackTripImage alt={trip.name} />
+        )}
+      </figure>
+      <div className="travelInfo">
+        <p className="category">{trip.category}</p>
+        <h2>{trip.name}</h2>
+        <span>
+          <HiOutlineLocationMarker color="#26A59E" />
+          <p className="location">{trip.cityCountry}</p>
+        </span>
+      </div>
+      <div className="buttons-container">
+        <button className="edit" onClick={handleEditModal}>
+          <HiPencil color="white" />
+        </button>
+        <button className="delete" onClick={handleDelete}>
+          <HiTrash color="white" />
+        </button>
+      </div>
+    </StyledLi>
+  );
+};

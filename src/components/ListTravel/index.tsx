@@ -34,23 +34,18 @@ export const ListTravel = ({
         </div>
 
         <ul>
-          {trips.map((i) => (
-            <div key={i.id}>
-              {i.userId === UserId ? (
-                <Card
-                  setEdit={setEdit}
-                  id={i?.id}
-                  setGetTravelId={setGetTravelId}
-                  setOpenModalDelete={setOpenModalDelete}
-                  handleModal={handleModal}
-                  img={i.img}
-                  name={i.name}
-                  category={i.category}
-                  location={i.cityCountry}
-                />
-              ) : null}
-            </div>
-          ))}
+          {trips
+            .filter((trip) => trip.userId === UserId)
+            .map((trip) => (
+              <Card
+                key={trip.id}
+                trip={trip}
+                setEdit={setEdit}
+                setGetTravelId={setGetTravelId}
+                setOpenModalDelete={setOpenModalDelete}
+                handleModal={handleModal}
+              />
+            ))}
         </ul>
       </section>
     </StylesListTravel>
