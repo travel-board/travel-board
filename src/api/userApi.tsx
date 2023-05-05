@@ -28,10 +28,13 @@ export const userApi = () => {
   const register =async (data: IRegisterFieldValues) => {
     
     api.post("/users", data)
-    .then(res => {
-      console.log(res)
+    .then(() => {
+      toast.success("Usuário cadastrado com sucesso!")
+      setTimeout(() => {
+        navigate("/login")
+      }, 2000)
     })
-    .catch(err => console.error(err))
+    .catch(err => toast.error(err.response.data))
 
   }
   

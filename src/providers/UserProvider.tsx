@@ -64,7 +64,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
               setToken(res.data.accessToken)
               navigate('/home')
           })
-          .catch(err => {
+          .catch(() => {
             localStorage.removeItem('@TOKEN')
             localStorage.removeItem('@USERID')
           })
