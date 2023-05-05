@@ -5,7 +5,11 @@ import { useState } from "react";
 import { StyledHeader } from "./style";
 import { useUser } from "../../hooks/useUser";
 
-export const Header = () => {
+interface IHeader{
+  setOpenModal: (data: boolean) => void;
+}
+
+export const Header = ({setOpenModal}:IHeader) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   const { handleLogout } = useUser()
@@ -53,8 +57,8 @@ export const Header = () => {
                 alt="UserIcon"
               />
             </figure>
-            <button className="addBtn">Adicionar</button>
-            <button className="exitButton">
+            <button className="addBtn" onClick={() => setOpenModal(true)}>Adicionar</button>
+            <button className="exitButton" onClick={handleLogout}>
               <div className="closeContainer">
                 <p>Sair</p>
                 <RxExit color="hsla(177, 63%, 40%, 1)" className="exitIcon" />

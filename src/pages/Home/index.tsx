@@ -27,7 +27,7 @@ export const Home = () => {
         <BodyHome>
             <ModalDelete id={getTravelId} openModalDelete={openModalDelete} setOpenModalDelete={setOpenModalDelete}/>
             <ModalCreateEdit id={getTravelId} openModal={openModal} setOpenModal={setOpenModal} edit={edit} />
-            <Header />
+            <Header setOpenModal={setOpenModal} />
             <ListTravel setEdit={setEdit} setGetTravelId={setGetTravelId} setOpenModalDelete={setOpenModalDelete} handleModal={handleModal} />
         </BodyHome>
     )
