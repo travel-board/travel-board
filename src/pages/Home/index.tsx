@@ -53,7 +53,7 @@ export const Home = () => {
         setOpenModal={setOpenModal}
         edit={edit}
       />
-      <Header onSearch={searchTrips} />
+      <Header onSearch={searchTrips} setOpenModal={setOpenModal} />
       <ListTravel
         setEdit={setEdit}
         setGetTravelId={setGetTravelId}
