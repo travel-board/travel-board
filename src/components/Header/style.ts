@@ -66,6 +66,7 @@ export const StyledHeader = styled.header`
         width: 23px;
         height: 23px;
         border-radius: 50%;
+        border: none;
       }
 
       .searchBar {
@@ -122,8 +123,7 @@ export const StyledHeader = styled.header`
   }
 
   @media (min-width: 1024px) {
-
-    .heading{
+    .heading {
       display: flex;
       padding-inline: 25px;
       justify-content: center;
@@ -146,7 +146,7 @@ export const StyledHeader = styled.header`
         justify-content: center;
         border-radius: 34px;
         padding: 0 5px;
-        background-color:  var(--gray-6);
+        background-color: var(--gray-6);
 
         .searchIcon {
           display: flex;
@@ -156,6 +156,7 @@ export const StyledHeader = styled.header`
           width: 23px;
           height: 23px;
           border-radius: 50%;
+          border: none;
         }
 
         .searchBar {
@@ -171,7 +172,7 @@ export const StyledHeader = styled.header`
           display: flex;
           width: 30px;
           height: 30px;
-          img{
+          img {
             width: 100%;
           }
         }

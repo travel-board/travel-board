@@ -1,5 +1,4 @@
-import { useContext } from 'react'
-import { ContextTravel } from '../providers/travelProvider'
+import { useContext } from "react";
+import { ContextTravel } from "../providers/TravelProvider";
 
-
-export const useTravel = () => useContext(ContextTravel)
+export const useTravel = () => useContext(ContextTravel);

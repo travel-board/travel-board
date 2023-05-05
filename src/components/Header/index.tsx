@@ -1,18 +1,29 @@
 import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import { RxExit } from "react-icons/rx";
 import logo from "../../assets/logo.svg";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { StyledHeader } from "./style";
 import { useUser } from "../../hooks/useUser";
 
-interface IHeader{
+type SearchFormElement = HTMLFormElement & {
+  search: HTMLInputElement;
+};
+
+interface IHeader {
   setOpenModal: (data: boolean) => void;
+  onSearch(search: string): void;
 }
 
-export const Header = ({setOpenModal}:IHeader) => {
+export const Header = ({ setOpenModal, onSearch }: IHeader) => {
   const [openMenu, setOpenMenu] = useState(false);
 
-  const { handleLogout } = useUser()
+  const { handleLogout } = useUser();
+
+  const handleSearch = (event: FormEvent<SearchFormElement>) => {
+    event.preventDefault();
+    const form = event.target as SearchFormElement;
+    onSearch(form.search.value);
+  };
 
   return (
     <StyledHeader>
@@ -24,10 +35,19 @@ export const Header = ({setOpenModal}:IHeader) => {
           <AiOutlineMenu className="menuIcon" />
         </button>
         <div className="headerNavDesktop">
-          <div className="searchContainer">
-            <input className="searchBar" type="text" placeholder="Search" />
-            <span className="searchIcon"><AiOutlineSearch color="white" /></span>
-          </div>
+          <form onSubmit={handleSearch}>
+            <div className="searchContainer">
+              <input
+                className="searchBar"
+                type="text"
+                placeholder="Search"
+                name="search"
+              />
+              <button className="searchIcon">
+                <AiOutlineSearch color="white" />
+              </button>
+            </div>
+          </form>
           <div className="userIconAndLogoutBtn">
             <figure className="userIcon">
               <img
@@ -48,7 +68,9 @@ export const Header = ({setOpenModal}:IHeader) => {
         <div className="headerNav">
           <div className="searchContainer">
             <input className="searchBar" type="text" placeholder="Search" />
-            <span className="searchIcon"><AiOutlineSearch color="white" /></span>
+            <span className="searchIcon">
+              <AiOutlineSearch color="white" />
+            </span>
           </div>
           <div className="userIconAndLogoutBtn">
             <figure className="userIcon">
@@ -57,7 +79,9 @@ export const Header = ({setOpenModal}:IHeader) => {
                 alt="UserIcon"
               />
             </figure>
-            <button className="addBtn" onClick={() => setOpenModal(true)}>Adicionar</button>
+            <button className="addBtn" onClick={() => setOpenModal(true)}>
+              Adicionar
+            </button>
             <button className="exitButton" onClick={handleLogout}>
               <div className="closeContainer">
                 <p>Sair</p>
@@ -67,8 +91,6 @@ export const Header = ({setOpenModal}:IHeader) => {
           </div>
         </div>
       ) : null}
-    
-    
     </StyledHeader>
   );
 };
