@@ -26,32 +26,33 @@ export const ListTravel = ({
   const UserId = localStorage.getItem("@USERID");
   return (
     <StylesListTravel>
-      <ul>
-        <span></span>
-        <span></span>
-        <div>
+      <section>
+        <div className="addBtn">
           <Button classN="blue" click={handleOpenModal}>
             Adicionar
           </Button>
         </div>
-        {trips.map((i) => (
-          <div key={i.id}>
-            {i.userId === UserId ? (
-              <Card
-                setEdit={setEdit}
-                id={i?.id}
-                setGetTravelId={setGetTravelId}
-                setOpenModalDelete={setOpenModalDelete}
-                handleModal={handleModal}
-                img={i.img}
-                name={i.name}
-                category={i.category}
-                location={i.cityCountry}
-              />
-            ) : null}
-          </div>
-        ))}
-      </ul>
+
+        <ul>
+          {trips.map((i) => (
+            <div key={i.id}>
+              {i.userId === UserId ? (
+                <Card
+                  setEdit={setEdit}
+                  id={i?.id}
+                  setGetTravelId={setGetTravelId}
+                  setOpenModalDelete={setOpenModalDelete}
+                  handleModal={handleModal}
+                  img={i.img}
+                  name={i.name}
+                  category={i.category}
+                  location={i.cityCountry}
+                />
+              ) : null}
+            </div>
+          ))}
+        </ul>
+      </section>
     </StylesListTravel>
   );
 };
