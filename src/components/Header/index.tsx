@@ -1,14 +1,29 @@
 import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import { RxExit } from "react-icons/rx";
 import logo from "../../assets/logo.svg";
-import { useState } from "react";
+import { FormEvent, SyntheticEvent, useState } from "react";
 import { StyledHeader } from "./style";
 import { useUser } from "../../hooks/useUser";
+import { useTravel } from "../../hooks/useTravel";
 
-export const Header = () => {
+interface HeaderProps {
+  onSearch(search: string): void;
+}
+
+type SearchFormElement = HTMLFormElement & {
+  search: HTMLInputElement;
+};
+
+export const Header = ({ onSearch }: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState(false);
 
-  const { handleLogout } = useUser()
+  const { handleLogout } = useUser();
+
+  const handleSearch = (event: FormEvent<SearchFormElement>) => {
+    event.preventDefault();
+    const form = event.target as SearchFormElement;
+    onSearch(form.search.value);
+  };
 
   return (
     <StyledHeader>
@@ -20,10 +35,19 @@ export const Header = () => {
           <AiOutlineMenu className="menuIcon" />
         </button>
         <div className="headerNavDesktop">
-          <div className="searchContainer">
-            <input className="searchBar" type="text" placeholder="Search" />
-            <span className="searchIcon"><AiOutlineSearch color="white" /></span>
-          </div>
+          <form onSubmit={handleSearch}>
+            <div className="searchContainer">
+              <input
+                className="searchBar"
+                type="text"
+                placeholder="Search"
+                name="search"
+              />
+              <button className="searchIcon">
+                <AiOutlineSearch color="white" />
+              </button>
+            </div>
+          </form>
           <div className="userIconAndLogoutBtn">
             <figure className="userIcon">
               <img
@@ -44,7 +68,9 @@ export const Header = () => {
         <div className="headerNav">
           <div className="searchContainer">
             <input className="searchBar" type="text" placeholder="Search" />
-            <span className="searchIcon"><AiOutlineSearch color="white" /></span>
+            <span className="searchIcon">
+              <AiOutlineSearch color="white" />
+            </span>
           </div>
           <div className="userIconAndLogoutBtn">
             <figure className="userIcon">
@@ -63,8 +89,6 @@ export const Header = () => {
           </div>
         </div>
       ) : null}
-    
-    
     </StyledHeader>
   );
 };
