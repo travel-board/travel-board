@@ -56,7 +56,6 @@ export const StyledHeader = styled.header`
       border-radius: 34px;
       padding: 0 5px;
       margin-top: 10px;
-      z-index: 1;
       background-color: white;
 
       .searchIcon {
