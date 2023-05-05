@@ -1,20 +1,20 @@
 import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import { RxExit } from "react-icons/rx";
 import logo from "../../assets/logo.svg";
-import { FormEvent, SyntheticEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { StyledHeader } from "./style";
 import { useUser } from "../../hooks/useUser";
-import { useTravel } from "../../hooks/useTravel";
-
-interface HeaderProps {
-  onSearch(search: string): void;
-}
 
 type SearchFormElement = HTMLFormElement & {
   search: HTMLInputElement;
 };
 
-export const Header = ({ onSearch }: HeaderProps) => {
+interface IHeader {
+  setOpenModal: (data: boolean) => void;
+  onSearch(search: string): void;
+}
+
+export const Header = ({ setOpenModal, onSearch }: IHeader) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   const { handleLogout } = useUser();
@@ -79,8 +79,10 @@ export const Header = ({ onSearch }: HeaderProps) => {
                 alt="UserIcon"
               />
             </figure>
-            <button className="addBtn">Adicionar</button>
-            <button className="exitButton">
+            <button className="addBtn" onClick={() => setOpenModal(true)}>
+              Adicionar
+            </button>
+            <button className="exitButton" onClick={handleLogout}>
               <div className="closeContainer">
                 <p>Sair</p>
                 <RxExit color="hsla(177, 63%, 40%, 1)" className="exitIcon" />

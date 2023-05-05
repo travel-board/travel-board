@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   width: 100%;
-  height: 58.56px;
-  border-bottom: 1px solid #dbdbdb;
+  min-height: 58.56px;
 
   .headerNavDesktop {
     display: none;
@@ -12,11 +11,11 @@ export const StyledHeader = styled.header`
   .heading {
     display: flex;
     width: 100%;
-    height: 58.56px;
+    min-height: 58.56px;
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
-
+    border-bottom: 1px solid #dbdbdb;
     .logo {
       width: 126px;
       img {
@@ -47,7 +46,7 @@ export const StyledHeader = styled.header`
     flex-direction: column;
     align-items: center;
     background-color: white;
-    z-index: 1;
+    margin-top: 10px;
     .searchContainer {
       display: flex;
       width: 262px;
@@ -57,7 +56,6 @@ export const StyledHeader = styled.header`
       border-radius: 34px;
       padding: 0 5px;
       margin-top: 10px;
-      z-index: 1;
       background-color: white;
 
       .searchIcon {
